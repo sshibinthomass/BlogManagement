@@ -1,0 +1,14 @@
+>>> db.create_all()                                                                     #create Database
+>>> from app import BlogPost                                                            #Import BlogPost from App
+>>> BlogPost.query.all()                                                                #View all in db
+[]                                                                                      #Output
+>>> db.session.add(BlogPost(title='blog 1',content='cont 1',author='shibin'))           #Add to DB
+>>> BlogPost.query.all()                                                                #View all in db
+[Blog Post 1]                                                                           #Output
+>>> BlogPost.query.all()[0].author                                                      #View a specific value in list
+'shibin'                                                                                #Output
+>>> BlogPost.query.filter_by(title='Shibin').all()                                      #Filter by title where title='Shibin'
+>>> BlogPost.query.get(2)  BlogPost.query.get(2)                                                               #Get a specific value
+>>> db.session.delete(BlogPost.query.get(4))                                            #Delete a query in DB
+>>> db.session.commit()                                                                 #Deletion and Inserting works only when commited
+>>> BlogPost.query.get(2).author='Ram'                                                  #Change a variable name needs commit

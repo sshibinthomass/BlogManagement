@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block head %}
+<title>Edit Posts</title>
+<head>
+  <link rel="stylesheet" href={{ url_for('static',filename='css/edit.css' ) }}>
+</head>
+{% endblock %} {% block body %}
+
+<hr />
+<h2>Edit Blog Post:</h2>
+<form action="/posts/edit/{{post.id}}" method="POST">
+  <input
+    class="form-control"
+    type="text"
+    name="title"
+    id="'title"
+    placeholder="Enter Title"
+    aria-label="Enter Title"
+    value="{{post.title}}"
+  />
+  <br />
+  Post:
+  <div class="form-group">
+    <textarea
+      class="form-control"
+      type="text"
+      name="content"
+      id="content"
+      rows="3"
+      placeholder="{{post.content}}"
+    ></textarea>
+  </div>
+  <br />
+  Author:
+  <input
+    class="form-control"
+    type="text"
+    name="author"
+    id="author"
+    value="{{post.author}}"
+  />
+  <br />
+  <input type="submit" class="btn btn-dark" value="Save" />
+</form>
+<hr />
+
+{% endblock %}
